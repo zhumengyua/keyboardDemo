@@ -11,10 +11,11 @@
 
 <body>
 
-    <head></head>
-    <mian class="wrapper" id="room">
+    <header></header>
+    <main>
+        <div class="wrapper" id="main">
 
-    </mian>
+    </main>
     <footer></footer>
 </body>
 <script>
@@ -53,25 +54,42 @@
     while (index < keys['lenght']) {
         //3.keys的长度为几，就创建几个div容器。
         divroom = document.createElement('div'); //创建一个div，取名为divroom
-        divroom.className='row'
-        room.appendChild(divroom); //id为room的元素，增加变量divzzz创建的变量
+        divroom.className = 'row'
+        main.appendChild(divroom); //id为room的元素，增加变量divzzz创建的变量
         //4.在div中创建kbd标签。一个div中几个kbd应该由keys里面数组的数决定
         row = keys[index]; //index=1的时候,row=keys[1]=1234567890
         index2 = 0;
         while (index2 < row['length']) {
             kbdroom = document.createElement('kbd');
             divroom.appendChild(kbdroom);
-            //每个kbd显示一个字
-            kbdroom.textContent = row[index2];
+            //每个kbd显示一个字(每个字加一个span)
+            span = document.createElement('span')
+            span.textContent = row[index2];
+            kbdroom.appendChild(span)
+            span.className = "text"
             //kbd下面创建一个button标签,用来存放编辑键
             buttonroom = document.createElement('button');
             buttonroom.textContent = '编辑'
             kbdroom.appendChild(buttonroom);
             kbdroom.className = "key2"
             buttonroom.id = row[index2];
+            //图标  
+            imgioc = document.createElement('img')
+            if (hash[row[index2]]) {
+                imgioc.src = 'http://' + hash[row[index2]] + '/favicon.ico'
+            }
+            else {
+                imgioc.src = 'http://i.loli.net/2018/03/25/5ab76eb265264.png'
+            }
+            imgioc.onerror = function (faico) {
+                faico.target.src = 'http://i.loli.net/2018/03/25/5ab76eb265264.png'
+            }
+            kbdroom.appendChild(imgioc)
             //编辑键功能
             buttonroom.onclick = function (onkey) {
-                newkey = onkey['target']['id']
+                button2 = onkey['target']
+                img2 = button2.nextSibling//读取下一个节点
+                newkey = button2['id']
                 x = prompt('给我一个网址')
                 hash[newkey] = x;
                 //只要hash变更，就存到www里面（浏览器缓存？）
