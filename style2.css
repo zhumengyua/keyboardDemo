@@ -1,74 +1,100 @@
 * {
-    margin: 0;
-    padding: 0;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
-
+body {
+  background: #373737 url(./wall.jpg) no-repeat center center;
+  background-size: cover; /*壁纸自适应！*/
+}
+#main {
+  display: inline-block;
+}
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 main {
-    text-align: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 kbd {
-    border: 1px solid black;
-    width: 4em;
-    height: 4em;
-    display: inline-block;
-    margin-left: 5px;
-    margin-top: 5px;
-    text-align: center;
-    text-transform: uppercase;
-    /*吧小写换成大写字母*/
+  border: 1px solid black;
+  width: 4em;
+  height: 4em;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  /*吧小写换成大写字母*/
 }
 
-kbd>button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: none;
+kbd > button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: none;
 }
 
-kbd:hover>button {
-    display: inline-block;
+kbd:hover > button {
+  display: inline-block;
 }
 
-#room {
-    display: inline-block;
-}
-
-div:nth-child(2) {
-    margin-left: 1em;
+div:nth-child(1) {
+  margin-left: 1em;
 }
 
 div:nth-child(3) {
-    margin-left: 3em;
+  margin-left: 2em;
 }
 
 div:nth-child(4) {
-    margin-left: 5em;
+  margin-left: 3em;
 }
 
 .key2 {
-    width: 50px;
-    height: 40px;
-    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
-    border: 1px solid #373737;
-    color: #c5c5c5;
-    border-radius: 5px;
-    box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 1px 0 2px #080808;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+  width: 50px;
+  height: 40px;
+  background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+  border: 1px solid #373737;
+  color: #c5c5c5;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020, 0 1px 0 2px #080808;
+  /* display: inline-flex;
+  align-items: center;
+  justify-content: center; 
+  因为加了span不需要这里写居中
+  */
+  text-transform: uppercase;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
 }
 
 .row .key2 {
-    margin: 12px 6px;
+  margin: 12px 6px;
+}
+.wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.key2 img {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  left: 0px;
+  bottom: 2px;
+}
+.key2 .text {
+  position: absolute;
+  left: 0px;
+  top: 4px;
 }
