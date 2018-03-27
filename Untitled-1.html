@@ -23,11 +23,11 @@
     var hashA = init()
     var keys = hashA['keys']
     var hash = hashA['hash']
-    //二、生成键盘
+        //二、生成键盘
     generateKeyboard(keys, hash)
-    //三、监听键盘
+        //三、监听键盘
     listenToUser(hash)
-    //下面的是工具函数
+        //下面的是工具函数
     function getFromLocalStorage(name) {
         return JSON.parse(localStorage.getItem(name) || 'null')
     }
@@ -47,19 +47,19 @@
         var buttonroom = tag('button');
         buttonroom.textContent = '编辑'
         buttonroom.id = id
-        //编辑键功能
-        buttonroom.onclick = function (onkey) {
+            //编辑键功能
+        buttonroom.onclick = function(onkey) {
             var button2 = onkey['target']
             var img2 = button2.previousSibling //读取上一个节点
             var newkey = button2['id']
             var x = prompt('给我一个网址')
             hash[newkey] = x;
             img2.src = 'http://' + x + '/favicon.ico'
-            imgioc.onerror = function (faico) {
+                //只要hash变更，就存到www里面（浏览器缓存里面）
+            localStorage.setItem('www', JSON.stringify(hash))
+            imgioc.onerror = function(faico) {
                 faico.target.src = 'http://demo.sc.chinaz.com/Files/pic/iconsico/6807/b10.ico'
             }
-            //只要hash变更，就存到www里面（浏览器缓存？）
-            localStorage.setItem('www', JSON.stringify(hash))
         }
         return buttonroom;
     }
@@ -71,7 +71,7 @@
         } else {
             imgioc.src = 'http://demo.sc.chinaz.com/Files/pic/iconsico/6807/b10.ico'
         }
-        imgioc.onerror = function (faico) {
+        imgioc.onerror = function(faico) {
             faico.target.src = 'http://demo.sc.chinaz.com/Files/pic/iconsico/6807/b10.ico'
         }
         return imgioc
@@ -82,33 +82,33 @@
     //1.创建key数组
     function init() {
         var keys = {
-            0: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-            1: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-            2: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-            3: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
-            lenght: 4
-        }
-        //2.创建对应的hash
+                0: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+                1: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+                2: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+                3: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+                lenght: 4
+            }
+            //2.创建对应的hash
         var hash = {
-            q: 'qq.com',
-            w: 'weibo.com',
-            e: 'ele.me',
-            r: 'renren.com',
-            t: 'tianya.com',
-            y: 'yahoo.com',
-            u: 'uc.com',
-            i: 'iqiyi.com',
-            o: 'opera.com',
-            p: undefined,
-            a: 'acfun.com',
-            s: 'sohu.com',
-            z: 'zhihu.com',
-            m: 'mcdonalds.com'
-        }
-        //取出桶内（编辑好的）www网址，对应的id
-        var hashlocalStorage = getFromLocalStorage('www')
-        if (hashlocalStorage) {
-            hash = hashlocalStorage
+                q: 'qq.com',
+                w: 'weibo.com',
+                e: 'ele.me',
+                r: 'renren.com',
+                t: 'tianya.com',
+                y: 'yahoo.com',
+                u: 'uc.com',
+                i: 'iqiyi.com',
+                o: 'opera.com',
+                p: undefined,
+                a: 'acfun.com',
+                s: 'sohu.com',
+                z: 'zhihu.com',
+                m: 'mcdonalds.com'
+            }
+            //取出桶内（编辑好的）www网址，对应的id
+        var hashInLocalStorage = getFromLocalStorage('www')
+        if (hashInLocalStorage) {
+            hash = hashInLocalStorage
         }
         return {
             "keys": keys,
@@ -151,9 +151,9 @@
     }
 
     function listenToUser(hash) {
-        document.onkeypress = function (onkey) {
+        document.onkeypress = function(onkey) {
             var newkey = onkey.key
-            //website=对应的网址
+                //website=对应的网址
             var website = hash[newkey]
             window.open('http://' + website, '_black')
         }
@@ -161,3 +161,4 @@
 </script>
 
 </html>
+}
